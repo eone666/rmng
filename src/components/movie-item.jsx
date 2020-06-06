@@ -5,6 +5,9 @@ import { find } from '../api/tmdb'
 import { Skeleton } from '@material-ui/lab'
 
 const useStyles = makeStyles(theme => ({
+    root: {
+        cursor: "pointer"
+    },
     img: {
         width: "100%"
     },
@@ -63,14 +66,18 @@ export default function MovieItem(props) {
 
     }
 
+    const handleMovieClick = () => {
+        props.onMovieClick(props.data.iframe_src)
+    }
+
     const classes = useStyles()
 
     return (
-        <li>
-            <a className={classes.link} href={props.data.iframe_src}>
-                {getPosterImage()}
-                <Typography color="textPrimary" align="center">{props.data.ru_title || props.data.title}</Typography>
-            </a>
+        <li className={classes.root} onClick={handleMovieClick}>
+
+            {getPosterImage()}
+            <Typography color="textPrimary" align="center">{props.data.ru_title || props.data.title}</Typography>
+
         </li >
     )
 }

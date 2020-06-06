@@ -3,6 +3,8 @@ import { short, movies } from './api/videocdn'
 import React, { useEffect, useState } from 'react'
 import MovieList from './components/movie-list'
 import Pagination from './components/pagination'
+import MovieBackdrop from './components/movie-backdrop'
+import Player from './components/player'
 
 function App() {
 
@@ -12,10 +14,12 @@ function App() {
   const [currentPage, setCurrentPage] = useState(1)
   const [isSearch, setSearchState] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
+  const [backdropIsOpened, setBackdropState] = useState(false)
+  const [iframeSrc, setIframeSrc] = useState('')
 
   const logoClickHandler = () => {
     setSearchState(false)
-    setCurrentPage(1)
+    setCurrentPage(0)
   }
 
   const getMovies = () => {
@@ -27,6 +31,9 @@ function App() {
         setSearchState(true)
       })
     } else {
+      if (currentPage === 0) {
+        setCurrentPage(1)
+      }
       movies({ page: currentPage }).then(result => {
         setFetchingState(false)
         setResult(result)
@@ -42,6 +49,16 @@ function App() {
     getMovies()
     // eslint-disable-next-line
   }, [currentPage])
+
+  const handleMovieClick = (playerSrc) => {
+    setBackdropState(true)
+    setIframeSrc(playerSrc)
+  }
+
+  const handleCloseBackdrop = () => {
+    setBackdropState(false)
+    setIframeSrc('')
+  }
 
   const searchHandler = (query) => {
     setSearchState(true)
@@ -71,12 +88,15 @@ function App() {
       return <div>{error.message}</div>
     }
 
-    if (result.result) {
+    if (result.data) {
 
       return <>
-        <MovieList data={result.data} />
+        <MovieList data={result.data} onMovieClick={handleMovieClick} />
         <Pagination currentPage={currentPage} pagesCount={result.last_page} onNext={NextBtnHandler} onPrev={PrevBtnHandler}></Pagination>
+
       </>
+    } else {
+      return <div className="not-found">Ничего не найдено</div>
     }
 
   }
@@ -85,6 +105,7 @@ function App() {
     <div className="App">
       <Header onSearch={searchHandler} onLogoClick={logoClickHandler}></Header>
       {fetchData()}
+      <MovieBackdrop opened={backdropIsOpened} onClose={handleCloseBackdrop}><Player iframeSrc={iframeSrc} /></MovieBackdrop>
     </div>
   );
 }

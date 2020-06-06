@@ -1,5 +1,6 @@
-const API_TOKEN = process.env.REACT_APP_TMDB_API_KEY
+const API_TOKEN = "a5786aa663bb8f4976764f7a68705c8a"
 const BASE_URL = "https://api.themoviedb.org/3"
+
 
 function objectToQuery(params) {
 

@@ -1,4 +1,4 @@
-const API_TOKEN = process.env.REACT_APP_VIDEOCDN_API_KEY
+const API_TOKEN = "gY1Dbxy9gZhDv8M98QEJeyP3wf68bcj9"
 const BASE_URL = "https://videocdn.tv/api"
 
 function objectToQuery(params) {

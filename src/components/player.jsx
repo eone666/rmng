@@ -3,16 +3,14 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
     root: {
-        width: "100%",
-        height: "100%"
+        width: "90%",
+        height: "90%"
     }
 }))
 
-export default function Player() {
+export default function Player(props) {
     const classes = useStyles()
     return (
-        <>
-            <iframe src={props.iframeSrc} frameborder="0"></iframe>
-        </>
+        <iframe className={classes.root} title="qq" src={props.iframeSrc} allowFullScreen="true " frameBorder="0"></iframe>
     )
 }

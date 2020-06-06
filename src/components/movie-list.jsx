@@ -23,7 +23,7 @@ export default function MovieList(props) {
 
     const eachData = () => {
         return props.data.map((item) => (
-            <MovieItem key={item.id} data={item} />
+            <MovieItem onMovieClick={props.onMovieClick} key={item.id} data={item} />
         ))
     }
 
