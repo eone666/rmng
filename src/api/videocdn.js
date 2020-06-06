@@ -20,3 +20,11 @@ export async function movies(params) {
         .catch(error => error)
 
 }
+
+export async function short(params) {
+
+    return fetch(`${BASE_URL}/short?api_token=${API_TOKEN}&${objectToQuery(params)}`)
+        .then(res => res.json())
+        .catch(error => error)
+
+}

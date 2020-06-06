@@ -11,10 +11,11 @@ const useStyles = makeStyles(theme => ({
 
 export default function Pagination(props) {
     const classes = useStyles()
+
     return (
         <div className={classes.root}>
             <Button color="primary" variant="contained" disabled={props.currentPage > 1 ? false : true} onClick={props.onPrev}>← Туда</Button>
-            <Button color="primary" variant="contained" disabled={props.currentPage <= props.pagesCount ? false : true} onClick={props.onNext}>Сюда →</Button>
+            <Button color="primary" variant="contained" disabled={props.currentPage < props.pagesCount ? false : true} onClick={props.onNext}>Сюда →</Button>
         </div>
     )
 }

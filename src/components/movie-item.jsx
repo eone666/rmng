@@ -40,7 +40,7 @@ export default function MovieItem(props) {
         const FILE_SIZE = "w200"
 
         if (isFetching) {
-            return <Skeleton variant="rect" width={150} height={250} />
+            return <Skeleton variant="rect" animation="pulse" width={150} height={250} />
         }
 
         if (error) {
@@ -49,11 +49,16 @@ export default function MovieItem(props) {
 
         if (result) {
 
-            const FILE_PATH = () => (
-                result.movie_results[0].poster_path
-            )
 
-            return <><img className={classes.img} src={BASE_URL + FILE_SIZE + '/' + FILE_PATH()} alt="" /></>
+            const FILE_PATH = () => {
+                if (result.movie_results.length) {
+                    return BASE_URL + FILE_SIZE + '/' + result.movie_results[0].poster_path
+                } else {
+                    return 'https://via.placeholder.com/150x220/eee'
+                }
+            }
+
+            return <><img className={classes.img} src={FILE_PATH()} alt="" /></>
         }
 
     }
@@ -64,7 +69,7 @@ export default function MovieItem(props) {
         <li>
             <a className={classes.link} href={props.data.iframe_src}>
                 {getPosterImage()}
-                <Typography color="textPrimary" align="center">{props.data.ru_title}</Typography>
+                <Typography color="textPrimary" align="center">{props.data.ru_title || props.data.title}</Typography>
             </a>
         </li >
     )
