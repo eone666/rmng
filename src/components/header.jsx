@@ -38,7 +38,7 @@ export default function Header(props) {
                 <Toolbar>
                     <div className={classes.title}>
                         <Button className={classes.button} onClick={props.onLogoClick}>
-                            <Typography variant="h4" className={classes.logo}><MovieIcon /> RMNG</Typography>
+                            <Typography variant="h5" className={classes.logo}><MovieIcon /> RMNG</Typography>
                         </Button>
                     </div>
                     <Search onSearch={props.onSearch} />
