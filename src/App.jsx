@@ -5,8 +5,17 @@ import MovieList from './components/movie-list'
 import Pagination from './components/pagination'
 import MovieBackdrop from './components/movie-backdrop'
 import Player from './components/player'
+import { makeStyles } from '@material-ui/core/styles'
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    paddingBottom: "50px"
+  }
+}))
 
 function App() {
+
+  const classes = useStyles()
 
   const [result, setResult] = useState({})
   const [isFetching, setFetchingState] = useState(true)
@@ -102,7 +111,7 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className={classes.root}>
       <Header onSearch={searchHandler} onLogoClick={logoClickHandler}></Header>
       {fetchData()}
       <MovieBackdrop opened={backdropIsOpened} onClose={handleCloseBackdrop}><Player iframeSrc={iframeSrc} /></MovieBackdrop>

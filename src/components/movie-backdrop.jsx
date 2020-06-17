@@ -12,8 +12,8 @@ const useStyles = makeStyles((theme) => ({
     button: {
         zIndex: theme.zIndex.drawer + 2,
         position: "fixed",
-        top: "20px",
-        right: "20px"
+        top: "15px",
+        right: "15px"
     },
     icon: {
         fill: "#fff"
