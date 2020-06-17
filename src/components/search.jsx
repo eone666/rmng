@@ -58,7 +58,7 @@ export default function Search(props) {
                 <SearchIcon />
             </div>
             <InputBase
-                placeholder="Search…"
+                placeholder="Поиск"
                 classes={{
                     root: classes.inputRoot,
                     input: classes.inputInput,
