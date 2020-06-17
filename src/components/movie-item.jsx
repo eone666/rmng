@@ -56,7 +56,11 @@ export default function MovieItem(props) {
             const FILE_PATH = () => {
                 if (result.movie_results.length) {
                     return BASE_URL + FILE_SIZE + '/' + result.movie_results[0].poster_path
-                } else {
+                }
+                else if (result.tv_results.length) {
+                    return BASE_URL + FILE_SIZE + '/' + result.tv_results[0].poster_path
+                }
+                else {
                     return 'https://via.placeholder.com/150x220/eee'
                 }
             }

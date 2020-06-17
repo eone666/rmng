@@ -23,7 +23,8 @@ const useStyles = makeStyles((theme) => ({
         color: "#fff"
     },
     button: {
-
+        display: "flex",
+        alignItems: "center"
     }
 }));
 
@@ -36,8 +37,8 @@ export default function Header(props) {
             <AppBar position="static">
                 <Toolbar>
                     <div className={classes.title}>
-                        <Button onClick={props.onLogoClick}>
-                            <Typography variant="h4" className={classes.logo}><MovieIcon fontSize="medium" /> RMNG</Typography>
+                        <Button className={classes.button} onClick={props.onLogoClick}>
+                            <Typography variant="h4" className={classes.logo}><MovieIcon /> RMNG</Typography>
                         </Button>
                     </div>
                     <Search onSearch={props.onSearch} />

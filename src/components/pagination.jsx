@@ -14,8 +14,8 @@ export default function Pagination(props) {
 
     return (
         <div className={classes.root}>
-            <Button color="primary" variant="contained" disabled={props.currentPage > 1 ? false : true} onClick={props.onPrev}>← Туда</Button>
-            <Button color="primary" variant="contained" disabled={props.currentPage < props.pagesCount ? false : true} onClick={props.onNext}>Сюда →</Button>
+            <Button color="primary" variant="contained" disabled={props.currentPage > 1 ? false : true} onClick={props.onPrev}>← Назад</Button>
+            <Button color="primary" variant="contained" disabled={props.currentPage < props.pagesCount ? false : true} onClick={props.onNext}>Вперед →</Button>
         </div>
     )
 }
