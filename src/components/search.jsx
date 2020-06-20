@@ -13,9 +13,10 @@ const useStyles = makeStyles((theme) => ({
             backgroundColor: fade(theme.palette.common.white, 0.25),
         },
         marginLeft: 0,
-        width: '100%',
+        width: '50%',
         [theme.breakpoints.down('sm')]: {
-            flexGrow: 1
+            flexGrow: 1,
+            width: "100%"
         }
     },
     searchIcon: {
