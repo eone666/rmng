@@ -4,9 +4,7 @@ import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(theme => ({
     root: {
-        padding: "20px",
-
-
+        padding: "20px"
     },
     list: {
         margin: 0,

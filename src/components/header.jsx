@@ -27,6 +27,16 @@ const useStyles = makeStyles((theme) => ({
     button: {
         display: "flex",
         alignItems: "center"
+    },
+    toolbar: {
+        display: "flex",
+        alignItems: "center",
+        flexDirection: "row",
+        justifyContent: "space-between",
+        [theme.breakpoints.down('sm')]: {
+            flexDirection: "column",
+            padding: "10px"
+        }
     }
 }));
 
@@ -37,7 +47,7 @@ export default function Header(props) {
     return (
         <div className={classes.root}>
             <AppBar position="static">
-                <Toolbar>
+                <Toolbar className={classes.toolbar}>
                     <div className={classes.title}>
                         <Button className={classes.button} onClick={props.onLogoClick}>
                             <Typography variant="h4" className={classes.logo}><MovieIcon fontSize="large" /> RMNG</Typography>
